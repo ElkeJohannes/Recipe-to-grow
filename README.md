@@ -89,24 +89,40 @@ The site will be feature adding, viewing, updating and deleting of recipes. Addi
 #### **<ins>Existing features</ins>**
 |#|Name|Description|
 |-|-|-|
-
+|1|Add recipe|Users can add recipes when logged in|
+|2|View recipe|View an individual recipe|
+|3|Overview|See all recipes on the site|
+|4|Search|Search through all recipes on the site|
+|5|Categories|Recipes are put into categories for easier searching|
+|6|Register|Register for an account to be able to add recipes|
 
 
 #### **<ins>Future features</ins>**
 |#|Name|Description|
 |-|-|-|
-
+|1|Social links|Allows sharing of a recipe on social media platforms|
+|2|More profile content|More profile content features like a screenname and avatar.|
+|3|Favorites|Mark a recipe as a favorite to save it to your profile|
 
 ---
 
 ## &rarr; **Technologies Used**
 ### **<ins>Languages</ins>**
 
-
+| <div align="center">HTML5</div> | <div align="center">CSS3</div> | <div align="center">Javascript</div> | <div align="center">Python</div> |
+|-|-|-|-|
+| ![html5](assets/images/html5.png) | ![css3](assets/images/css3.png) | ![javascript](assets/images/javascript.png) | ![python](assets/images/python.png) |
 
 
 ### **<ins>Libraries, Frameworks and programs</ins>**
-
+- [JQuery 3.5.1](https://jquery.com/)
+  * Used throughout the game.js file for easier DOM access.
+- [Bootstrap 5.1.0](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
+  * Used widely troughout the site to speed up layout design.
+- [Multi device mockup generator](http://techsini.com/multi-mockup/index.php)
+  * Used to create the header image of this readme file.
+- [Favicon generator](https://favicon.io/favicon-generator/)
+  * Used to create a custom favicon.
 ---
 
 ## &rarr; **Deployment** 
