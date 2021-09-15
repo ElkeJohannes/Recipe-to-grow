@@ -1,0 +1,32 @@
+.main-navbar {
+    position: absolute;
+    width: 100%;    
+}
+
+.nav-space-filler{
+    height: 80px;
+}
+
+.navbar-card {
+    margin-left: auto;
+    min-width: 180px;
+    max-width: max-content;
+    --bs-bg-opacity: 0.75;
+    background-color: rgba(var(--bs-success-rgb),var(--bs-bg-opacity))!important;    
+}
+
+li.nav-item {
+    text-align: right; 
+}
+
+li.nav-item a {
+    color: #fff;
+}
+
+
+/* Bootstrap class overrides */
+
+.card {
+    border: initial;
+    border-radius: 0px 0px 0px 0.5rem;
+}
