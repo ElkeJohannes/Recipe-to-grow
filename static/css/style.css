@@ -30,3 +30,12 @@ li.nav-item a {
     border: initial;
     border-radius: 0px 0px 0px 0.5rem;
 }
+
+
+@media (min-width: 992px) {
+    .navbar-card{
+        margin-left: calc(83.33333333% - 110px);
+        max-width: initial;
+        align-items: center;
+    }
+}
