@@ -1,3 +1,4 @@
+/* -------- Top Navigation */
 .main-navbar {
     position: absolute;
     width: 100%;    
@@ -23,6 +24,16 @@ li.nav-item a {
     color: #fff;
 }
 
+/* -------- // Top Navigation */
+
+/* -------- Home page */
+
+.home-main-content{
+    text-align: center;
+}
+
+/* -------- //Home page */
+
 
 /* Bootstrap class overrides */
 
@@ -30,7 +41,6 @@ li.nav-item a {
     border: initial;
     border-radius: 0px 0px 0px 0.5rem;
 }
-
 
 @media (min-width: 992px) {
     .navbar-card{
