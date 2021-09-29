@@ -31,8 +31,8 @@
                     {% else %}
                         <div class="carousel-item">
                     {% endif %}
-                            <img src="{{ url_for('static', filename='/img/placeholder-light-grey.png') }}"
-                                class="d-block w-100" alt="placeholder">
+                            <img src="/static/img/recipes/{{recipe.Image}}"
+                                class="d-block w-100 carousel-image" alt="placeholder">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{ recipe.Title }}</h5>
                                 <p>{{ recipe.Description }}</p>
@@ -75,8 +75,8 @@
                         {% else %}
                             <div class="carousel-item">
                         {% endif %}
-                                <img src="{{ url_for('static', filename='/img/placeholder-light-grey.png') }}"
-                                    class="d-block w-100" alt="placeholder">
+                                <img src="/static/img/recipes/{{recipe.Image}}"
+                                class="d-block w-100 carousel-image" alt="placeholder">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>{{ recipe.Title }}</h5>
                                     <p>{{ recipe.Description }}</p>
