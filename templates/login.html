@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block mainContent %}
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1>Login</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <form action="" class="login-form">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Leonardo">
+                <label for="password" class="form-label">Password:</label>
+                <input type="text" name="password" id="password" class="form-control" placeholder="C@PrioDaVinc1!">
+                <button type="submit" class="btn btn-success form-control">Login</button>
+                <a href="#" class="btn btn-info form-control">or Register</a>
+            </form>
+        </div>
+    </div>
+    
+
+{% endblock %}
