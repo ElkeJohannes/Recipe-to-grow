@@ -21,8 +21,8 @@
     <header class="main-navbar">
         <!-- Navbar -->
         <nav class="navbar navbar-dark bg-success bg-opacity-75">
-            <div class="container-fluid col-lg-10">
-                <a class="navbar-brand" href="#">Recipe to grow</a>
+            <div class="container-fluid col-lg-9">
+                <a class="navbar-brand" href="{{ url_for('home') }}">Recipe to grow</a>
 
                 <!-- Mobile toggler -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
@@ -58,7 +58,7 @@
 
     <div class="nav-space-filler"></div>
 
-    <div class="container-fluid col-lg-10">
+    <div class="container-fluid col-lg-9">
         {% block mainContent %}
 
         {% endblock %}

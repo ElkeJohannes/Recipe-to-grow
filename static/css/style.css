@@ -45,6 +45,16 @@ li.nav-item a {
 
 /* -------- //Home page */
 
+/* -------- //Recipes page */
+
+.recipes-header{
+    justify-content: space-between;
+    display: flex;
+    margin: 10px auto;
+}
+
+
+/* -------- //Recipes page */
 
 /* Bootstrap class overrides */
 
