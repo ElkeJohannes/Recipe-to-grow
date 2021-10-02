@@ -53,6 +53,34 @@ li.nav-item a {
     margin: 10px auto;
 }
 
+.all-recipes{
+    display: flex;
+    margin: 5px auto;
+}
+
+.recipe{
+    text-align: center;
+    max-width: 200px;
+    margin: 10px auto;
+}
+
+.recipe p{
+    margin: 0px;
+}
+
+.recipe-title{
+    font-weight: bold;
+}
+
+.recipe-description {
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.all-recipes img{
+    width: 200px;
+    height: 200px;
+}
 
 /* -------- //Recipes page */
 

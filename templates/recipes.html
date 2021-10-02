@@ -4,21 +4,40 @@
 
 <div class="row">
     <div class="col-md-11 recipes-header">
-        <input type="text" placeholder="Search recipes...">
+        <div>
+            <input type="text" placeholder="Search recipes...">
+            <a href="#" class="btn btn-success">Search!</a>
+        </div>
         <h4>All recipes</h4>
     </div>
 </div>
 
 <hr>
 
-<div class="row all-recipes">
-    <div class="col-md-11">
-        <p>placeholder text</p>
+<div class="row">
+    <div class="col-md-10 all-recipes">
+        {% for recipe in recipes %}
+        <div class="recipe">
+            <img src="/static/img/recipes/{{recipe.Image}}" alt="{{ recipe.Title }}">
+            <a href="" class="link-success">
+                <p class="recipe-title">
+                    {% if recipe.Title|length > 23 %}
+                        {{ recipe.Title[0:22] }}..
+                    {% else %}
+                        {{ recipe.Title }}
+                    {% endif %}
+                </p>
+                <p class="recipe-description">
+                    {% if recipe.Description|length > 48 %}
+                        {{ recipe.Description[0:46] }}..
+                    {% else %}
+                        {{ recipe.Description }}
+                    {% endif %}
+                </p>
+            </a>
+        </div>
+        {% endfor %}
     </div>
 </div>
-
-
-
-
 
 {% endblock %}
