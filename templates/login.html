@@ -8,11 +8,17 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-5">
-            <form action="" class="login-form">
+            <form method="POST" action="{{ url_for('login') }}" class="login-form">
                 <label for="username" class="form-label">Username:</label>
-                <input type="text" name="username" id="username" class="form-control" placeholder="Leonardo">
+                <input type="text" name="username" id="username" class="form-control" minlength="5" 
+                    maxlength="25" pattern="^[a-zA-Z0-9]{5,15}$"
+                    placeholder="leonardo" required>
+
                 <label for="password" class="form-label">Password:</label>
-                <input type="text" name="password" id="password" class="form-control" placeholder="C@PrioDaVinc1!">
+                <input type="text" name="password" id="password" type="password" minlength="5" 
+                    maxlength="25" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" 
+                    placeholder="*******" required>
+
                 <button type="submit" class="btn btn-success form-control">Login</button>
                 <a href="#" class="btn btn-info form-control">or Register</a>
             </form>

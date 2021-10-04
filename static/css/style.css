@@ -24,8 +24,6 @@ li.nav-item a {
     color: #fff;
 }
 
-/* -------- // Top Navigation */
-
 /* -------- Home page */
 
 .home-main-content{
@@ -43,9 +41,7 @@ li.nav-item a {
     margin-bottom: 0px;
 }
 
-/* -------- //Home page */
-
-/* -------- //Recipes page */
+/* -------- Recipes page */
 
 .recipes-header{
     justify-content: space-between;
@@ -82,9 +78,7 @@ li.nav-item a {
     height: 200px;
 }
 
-/* -------- //Recipes page */
-
-/* -------- //Login page */
+/* -------- Login page */
 
 .login-form{
     margin-top: 30px;
@@ -94,9 +88,14 @@ li.nav-item a {
     width: 100%;
 }
 
-/* -------- //Login page */
+/* -------- General */
 
-/* Bootstrap class overrides */
+.flash-messages{
+    max-width: fit-content;
+    margin: auto;
+}
+
+/* -------- Bootstrap class overrides */
 
 .card {
     border: initial;
@@ -106,6 +105,8 @@ li.nav-item a {
 .form-control{
     margin: 5px;
 }
+
+/* -------- Media Queries */
 
 @media (min-width: 992px) {
     .navbar-card{

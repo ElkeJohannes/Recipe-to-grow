@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask import render_template
 
 if os.path.exists("env.py"):
@@ -29,8 +30,29 @@ def recipes():
     return render_template('recipes.html', recipes = recipes)
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        USERNAME = request.form.get("username").lower()
+        PASSWORD = request.form.get("password")
+        # check if username exists in db
+        existing_user = mongo.db.Users.find_one({"username": USERNAME})
+
+        if existing_user:
+            # ensure hashed password matches user input
+            if check_password_hash(existing_user["password"], PASSWORD):
+                session["user"] = USERNAME
+                flash("Welcome, {}".format(USERNAME))
+            else:
+                # invalid password match
+                flash("Incorrect Username and\or Password")
+                return redirect(url_for("login"))
+
+        else: 
+            # username doesn't exist
+            flash("Incorrect Username and\or Password")
+            return redirect(url_for("login"))
+
     return render_template("login.html")
 
 
