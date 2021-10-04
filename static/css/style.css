@@ -78,13 +78,13 @@ li.nav-item a {
     height: 200px;
 }
 
-/* -------- Login page */
+/* -------- forms */
 
-.login-form{
+.login-form, .register-form{
     margin-top: 30px;
 }
 
-.login-form a{
+.login-form,.register-form a{
     width: 100%;
 }
 

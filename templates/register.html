@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block mainContent %}
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1>Register</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <form method="POST" action="{{ url_for('register') }}" class="register-form">
+                <label for="firstname" class="form-label">Firstname:</label>
+                <input type="text" name="firstname" id="firstname" class="form-control" minlength="2" 
+                    maxlength="25" pattern="^[a-zA-Z0-9]{2,25}$"
+                    placeholder="Leonardo" required>
+                
+                <label for="lastname" class="form-label">Lastname:</label>
+                <input type="text" name="lastname" id="lastname" class="form-control" minlength="2" 
+                    maxlength="25" pattern="^[a-zA-Z0-9]{2,25}$"
+                    placeholder="Da Vinci" required>
+
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" name="username" id="username" class="form-control" minlength="2" 
+                    maxlength="25" pattern="^[a-zA-Z0-9]{2,25}$"
+                    placeholder="ldavinci" required>
+
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" name="password" id="password" type="password" minlength="5" 
+                    maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" 
+                    placeholder="*******" required>
+
+                <button type="submit" class="btn btn-success form-control">Register</button>
+                <a href="{{ url_for('login') }}" class="btn btn-info form-control">or Login</a>
+            </form>
+        </div>
+    </div>
+    
+
+{% endblock %}
