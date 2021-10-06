@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block mainContent %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1>Add recipe</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <form method="POST" action="{{ url_for('addRecipe') }}" class="recipeForm"
+                enctype=multipart/form-data>
+
+                <label for="title" class="form-label">Title*</label>
+                <input type="text" name="title" id="title" class="form-control" required>
+
+                <label for="description" class="form-label">Description</label>
+                <input type="textarea" name="description" id="description" class="form-control">
+
+                <label for="recipeImage" class="form-label">Image*</label>
+                <input type="file" id="recipeImage" name="recipeImage" value="Select an image.." class="form-control">
+
+                
+
+                <button type="submit" class="btn btn-success form-control">Add recipe</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

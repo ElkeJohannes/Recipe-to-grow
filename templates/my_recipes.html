@@ -2,10 +2,15 @@
 
 {% block mainContent %}
 
+<a href="{{url_for('addRecipe')}}" class="btn btn-success">Add recipe</a>
+
 <ul>
     {% for recipe in recipes %}
 
-    <li><a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">{{ recipe.Title }}</a></li>
+    <li>
+        <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">{{ recipe.Title }}</a>
+        <i class="fas fa-edit"></i>
+    </li>
 
     {% endfor %}
 </ul>
