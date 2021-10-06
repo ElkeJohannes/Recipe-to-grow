@@ -70,8 +70,7 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(existing_user["Password"], PASSWORD):
-                session["user"] = USERNAME
-                
+                return redirect(url_for("myrecipes"))
                 flash("Welcome {} {}".format(existing_user['Firstname'], existing_user['Lastname']))
             else:
                 # invalid password match
@@ -92,6 +91,12 @@ def logout():
     session.pop('user')
     flash("You have been logged out.")
     return redirect(url_for("home"))
+
+
+@app.route("/myrecipes")
+def myrecipes():
+    recipes = list(mongo.db.Recipes.find({"Owner": session["user"]}))
+    return render_template("myrecipes.html", recipes = recipes)
 
 
 if __name__ == "__main__":
