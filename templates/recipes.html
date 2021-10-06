@@ -17,9 +17,9 @@
 <div class="row">
     <div class="col-md-10 all-recipes">
         {% for recipe in recipes %}
-        <div class="recipe">
-            <img src="/static/img/recipes/{{recipe.Image}}" alt="{{ recipe.Title }}">
-            <a href="" class="link-success">
+        <div class="recipe">            
+            <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}" class="link-success">
+                <img src="/static/img/recipes/{{recipe.Image}}" alt="{{ recipe.Title }}">
                 <p class="recipe-title">
                     {% if recipe.Title|length > 23 %}
                         {{ recipe.Title[0:22] }}..

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block mainContent %}
+
+    <h2 class="justify-center text-center recipeHeader">{{recipe.Title}}</h2>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="ingredients">
+                <h5>Ingredients:</h5>
+                <ul>
+                    {% for ingredient in recipe.Ingredients %}
+                        <li>{{ingredient}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="preperationSteps">
+                <h5>Preperation steps:</h5>
+                <ul>
+                    {% for step in recipe.CookingSteps %}
+                        <li>{{step}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <img src="/static/img/recipes/{{recipe.Image}}" alt="{{recipe.Title}}" class="rounded singleRecipeImage">
+        </div>
+    </div>
+
+
+
+{% endblock %}

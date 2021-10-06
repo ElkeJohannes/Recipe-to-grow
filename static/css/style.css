@@ -78,6 +78,21 @@ li.nav-item a {
     height: 200px;
 }
 
+/* -------- View Recipe */
+
+.recipeHeader{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-right: 25%;
+}
+
+.singleRecipeImage{
+    margin: auto;
+    display: flex;
+    min-width: 70%;
+    max-height: 70%;
+}
+
 /* -------- forms */
 
 .login-form, .register-form{
