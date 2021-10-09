@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block mainContent %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <h1>Edit recipe</h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <form method="POST" action="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="recipeForm" enctype=multipart/form-data>
+
+            <label for="title" class="form-label">Title*</label>
+            <input type="text" name="title" id="title" class="form-control" value="{{recipe.Title}}" required>
+
+            <label for="description" class="form-label">Description</label>
+            <input type="textarea" name="description" id="description" value="{{recipe.Description}}"" class="
+                form-control">
+
+            <label for="recipeImage" class="form-label">Image*</label>
+            <input type="file" id="recipeImage" name="recipeImage" class="form-control">
+
+            <div id="ingredients_div">
+                <div class="form-arrays">
+                    <label for="ingredients" class="form-label">Ingredients*</label>
+                    <div class="form-controls">
+                        <a href="#" id="ingredients_plus" class=""><i class="fas fa-plus-circle"></i></a>
+                        <a href="#" id="ingredients_minus"><i class="fas fa-minus-circle"></i></a>
+                    </div>
+                </div>
+                {% for ingredient in recipe.Ingredients %}
+                    <input type="text" name="ingredients[]" value="{{ingredient}}" class="form-control" required>
+                {% endfor %}
+            </div>
+
+            <div id="cookingSteps_div">
+                <div class="form-arrays">
+                    <label for="cookingSteps" class="form-label">Cooking steps*</label>
+                    <div class="form-controls">
+                        <a href="#" id="cookingSteps_plus" class=""><i class="fas fa-plus-circle"></i></a>
+                        <a href="#" id="cookingSteps_minus"><i class="fas fa-minus-circle"></i></a>
+                    </div>
+                </div>
+                {% for cookingStep in recipe.CookingSteps %}
+                    <input type="text" name="cookingSteps[]" value="{{cookingStep}}" class="form-control" required>
+                {% endfor %}
+            </div>
+
+            <div id="tipsTricks_div">
+                <div class="form-arrays">
+                    <label for="tipsTricks" class="form-label">Tips and Tricks</label>
+                    <div class="form-controls">
+                        <a href="#" id="tipsTricks_plus" class=""><i class="fas fa-plus-circle"></i></a>
+                        <a href="#" id="tipsTricks_minus"><i class="fas fa-minus-circle"></i></a>
+                    </div>
+                </div>
+                {% for tipTrick in recipe.TipsTricks %}
+                    <input type="text" name="tipsTricks[]" value="{{tipTrick}}" class="form-control" required>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="btn btn-success form-control">Edit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

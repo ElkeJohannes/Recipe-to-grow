@@ -159,6 +159,41 @@ def addRecipe():
     return render_template("add_recipe.html")
 
 
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def editRecipe(recipe_id):  
+    if request.method == "POST":
+        recipeToEdit = mongo.db.Recipes.find_one({"_id": ObjectId(recipe_id)})
+        # Get the info from the form and add some additional info
+        recipe = ({
+            "Title": request.form.get("title"),
+            "Description": request.form.get("description"),
+            "TimesViewed": 0,
+            "DateAdded": date.today().strftime("%d/%m/%Y"),
+            "Owner": session["user"],
+            "Ingredients": request.form.getlist('ingredients[]'),
+            "CookingSteps": request.form.getlist('cookingSteps[]'),
+            "TipsTricks": request.form.getlist('tipsTricks[]'),
+            "Image": recipeToEdit["Image"]
+        })
+
+        # Handle the upload of the recipe image
+        # Credit for the code in README.md (flask.palletprojects.com)
+        # If there's a new file, upload it, else just keep the original
+        file = request.files['recipeImage']
+        if file.filename != '' and allowed_file(file.filename):
+            filename = session['user'] + "_" + secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            recipe.update({
+                "Image": filename
+            })
+
+        mongo.db.Recipes.update({"_id": ObjectId(recipe_id)}, recipe)
+        flash("Recipe saved!")
+        return redirect(url_for("myRecipes"))
+    recipe = mongo.db.Recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("edit_recipe.html", recipe = recipe)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

@@ -2,18 +2,30 @@
 
 {% block mainContent %}
 
+<header class="my-recipes-header">
+    <h2>My Recipes</h2>
+</header>
+
+<div class="col-md-5 my-recipes-list">
+    <ul>
+        {% for recipe in recipes %}
+
+        <li>
+            <div class="recipe-listing">
+                <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">{{ recipe.Title }}</a>
+                <div class="recipe-controls">
+                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}"><i class="fas fa-edit"></i></a>
+
+                </div>
+            </div>
+
+
+        </li>
+
+        {% endfor %}
+    </ul>
+</div>
+
 <a href="{{url_for('addRecipe')}}" class="btn btn-success">Add recipe</a>
-
-<ul>
-    {% for recipe in recipes %}
-
-    <li>
-        <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">{{ recipe.Title }}</a>
-        <i class="fas fa-edit"></i>
-    </li>
-
-    {% endfor %}
-</ul>
-
 
 {% endblock %}
