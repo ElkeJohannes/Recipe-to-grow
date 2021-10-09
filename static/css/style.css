@@ -103,6 +103,15 @@ li.nav-item a {
     width: 100%;
 }
 
+.form-controls{
+    display: flex;
+    margin-left: auto;
+}
+
+.form-arrays{
+    display: flex;
+}
+
 /* -------- General */
 
 .flash-messages{

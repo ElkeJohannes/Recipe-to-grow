@@ -2,30 +2,60 @@
 
 {% block mainContent %}
 
-    <div class="row justify-content-center">
-        <div class="col-md-6 text-center">
-            <h1>Add recipe</h1>
-        </div>
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <h1>Add recipe</h1>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <form method="POST" action="{{ url_for('addRecipe') }}" class="recipeForm"
-                enctype=multipart/form-data>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <form method="POST" action="{{ url_for('addRecipe') }}" class="recipeForm" enctype=multipart/form-data>
 
-                <label for="title" class="form-label">Title*</label>
-                <input type="text" name="title" id="title" class="form-control" required>
+            <label for="title" class="form-label">Title*</label>
+            <input type="text" name="title" id="title" class="form-control" required>
 
-                <label for="description" class="form-label">Description</label>
-                <input type="textarea" name="description" id="description" class="form-control">
+            <label for="description" class="form-label">Description</label>
+            <input type="textarea" name="description" id="description" class="form-control">
 
-                <label for="recipeImage" class="form-label">Image*</label>
-                <input type="file" id="recipeImage" name="recipeImage" value="Select an image.." class="form-control">
+            <label for="recipeImage" class="form-label">Image*</label>
+            <input type="file" id="recipeImage" name="recipeImage" value="Select an image.." class="form-control">
 
-                
+            <div id="ingredients_div">
+                <div class="form-arrays">
+                    <label for="ingredients" class="form-label">Ingredients*</label>
+                    <div class="form-controls">
+                        <a href="#" id="ingredients_plus" class=""><i class="fas fa-plus-circle"></i></a>
+                        <a href="#" id="ingredients_minus"><i class="fas fa-minus-circle"></i></a>
+                    </div>
+                </div>
+                <input type="text" name="ingredients[]" id="ingredients1" class="form-control" required>
+            </div>
 
-                <button type="submit" class="btn btn-success form-control">Add recipe</button>
-            </form>
-        </div>
+            <div id="cookingSteps_div">
+                <div class="form-arrays">
+                    <label for="cookingSteps" class="form-label">Cooking steps*</label>
+                    <div class="form-controls">
+                        <a href="#" id="cookingSteps_plus" class=""><i class="fas fa-plus-circle"></i></a>
+                        <a href="#" id="cookingSteps_minus"><i class="fas fa-minus-circle"></i></a>
+                    </div>
+                </div>
+                <input type="text" name="cookingSteps[]" id="cookingSteps1" class="form-control" required>
+            </div>
+
+            <div id="tipsTricks_div">
+                <div class="form-arrays">
+                    <label for="tipsTricks" class="form-label">Tips and Tricks</label>
+                    <div class="form-controls">
+                        <a href="#" id="tipsTricks_plus" class=""><i class="fas fa-plus-circle"></i></a>
+                        <a href="#" id="tipsTricks_minus"><i class="fas fa-minus-circle"></i></a>
+                    </div>
+                </div>
+                <input type="text" name="tipsTricks[]" id="tipsTricks1" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-success form-control">Add recipe</button>
+        </form>
     </div>
+</div>
 
 {% endblock %}

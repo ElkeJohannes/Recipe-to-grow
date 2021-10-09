@@ -127,7 +127,10 @@ def addRecipe():
             "Description": request.form.get("description"),
             "TimesViewed": 0,
             "DateAdded": date.today().strftime("%d/%m/%Y"),
-            "Owner": session["user"]
+            "Owner": session["user"],
+            "Ingredients": request.form.getlist('ingredients[]'),
+            "CookingSteps": request.form.getlist('cookingSteps[]'),
+            "TipsTricks": request.form.getlist('tipsTricks[]')
         })
 
         # Handle the upload of the recipe image
