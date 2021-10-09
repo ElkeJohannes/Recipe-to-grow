@@ -1,3 +1,14 @@
+/* -------- General */
+
+.flash-messages{
+    max-width: fit-content;
+    margin: auto;
+}
+
+.control{
+    margin: 5px;
+}
+
 /* -------- Top Navigation */
 .main-navbar {
     position: absolute;
@@ -118,20 +129,15 @@ li.nav-item a {
     width: 100%;
 }
 
-.form-controls{
-
-}
-
 .form-arrays{
     display: flex;
 }
 
-/* -------- General */
-
-.flash-messages{
-    max-width: fit-content;
-    margin: auto;
+.form-controls{
+    margin-left: auto;
 }
+
+
 
 /* -------- Bootstrap class overrides */
 

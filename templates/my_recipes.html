@@ -14,12 +14,14 @@
             <div class="recipe-listing">
                 <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">{{ recipe.Title }}</a>
                 <div class="recipe-controls">
-                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}"><i class="fas fa-edit"></i></a>
-
+                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="control">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="control">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
                 </div>
             </div>
-
-
         </li>
 
         {% endfor %}
