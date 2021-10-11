@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block mainContent %}
-
+    <!-- Recipe title -->
     <h2 class="justify-center text-center recipeHeader">{{recipe.Title}}</h2>
     <div class="row">
         <div class="col-md-7">
+            <!-- Recipe ingredients -->
             <div class="ingredients">
                 <h5>Ingredients:</h5>
                 <ul>
@@ -13,6 +14,7 @@
                     {% endfor %}
                 </ul>
             </div>
+            <!-- Recipe prepping steps -->
             <div class="preperationSteps">
                 <h5>Preperation steps:</h5>
                 <ul>
@@ -22,6 +24,7 @@
                 </ul>
             </div>
         </div>
+        <!-- Recipe image -->
         <div class="col-md-5">
             <img src="/static/img/recipes/{{recipe.Image}}" alt="{{recipe.Title}}" class="rounded singleRecipeImage">
         </div>
@@ -29,16 +32,14 @@
 
     <!-- Advertisment of sellable products -->
     <div class="row products">
-        <!-- <div class="col"> -->
-            <h5>Feel like growing the ingredients yourself?</h5>
-            {% for product in products %}
-                <div class="col">
-                    <div><a href="#">{{product.Name}}</a></div>
-                    <div>{{product.Amount}}</div>
-                    <div>{{product.Price}}</div>
-                </div>
-            {% endfor %}
-        <!-- </div> -->
+        <h5>Feel like growing the ingredients yourself?</h5>
+        {% for product in products %}
+            <div class="col">
+                <div><a href="#">{{product.Name}}</a></div>
+                <div>{{product.Amount}}</div>
+                <div>{{product.Price}}</div>
+            </div>
+        {% endfor %}
     </div>
 
 {% endblock %}

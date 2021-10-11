@@ -12,11 +12,13 @@ from flask import render_template
 if os.path.exists("env.py"):
     import env
 
+# Define the constants needed for the recipe image uploads
 UPLOAD_FOLDER = 'static/img/recipes/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
 
+# Configure our app to run with the needed environment variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -26,25 +28,28 @@ mongo = PyMongo(app)
 
 
 def allowed_file(filename):
+    # Checks if a filename is of an allowed file type
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route("/")
 def home():
+    # Gets all recipes and renders the home page
     recipes = list(mongo.db.Recipes.find())
     return render_template('home.html', recipes=recipes)
 
 
 @app.route("/recipes")
 def recipes():
+    # Gets all recipes and renders the recipes page
     recipes = list(mongo.db.Recipes.find())
     return render_template('recipes.html', recipes=recipes)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    # Either show the registration form or perform the register
+    # Either show the registration form or perform the registration
     if request.method == "POST":
         USERNAME = request.form.get("username").lower()
 
@@ -55,6 +60,7 @@ def register():
             flash("Username already in use")
             return redirect(url_for("register"))
         register = {
+            # Get the form values
             "Firstname": request.form.get('firstname'),
             "Lastname": request.form.get('lastname'),
             "Username": USERNAME,
@@ -76,24 +82,24 @@ def login():
     if request.method == "POST":
         USERNAME = request.form.get("username").lower()
         PASSWORD = request.form.get("password")
-        # check if username exists in db
+        # Check if username exists in db
         existing_user = mongo.db.Users.find_one({"Username": USERNAME})
 
         if existing_user:
-            # ensure hashed password matches user input
+            # Ensure hashed password matches user input
             if check_password_hash(existing_user["Password"], PASSWORD):
-                # put the new user into session cookie
+                # Put the new user into session cookie
                 session["user"] = USERNAME
                 flash("Welcome {} {}".format(existing_user['Firstname'],
                                              existing_user['Lastname']))
                 return redirect(url_for("myRecipes"))
             else:
-                # invalid password match
+                # Invalid password match
                 flash("Incorrect Username and\or Password")
                 return redirect(url_for("login"))
 
         else:
-            # username doesn't exist
+            # Username doesn't exist
             flash("Incorrect Username and\or Password")
             return redirect(url_for("login"))
 
@@ -102,7 +108,7 @@ def login():
 
 @app.route("/logout")
 def logout():
-    # remove the 'user' session cookie
+    # Remove the 'user' session cookie
     session.pop('user')
     flash("You have been logged out.")
     return redirect(url_for("home"))
@@ -110,12 +116,15 @@ def logout():
 
 @app.route("/my_recipes")
 def myRecipes():
+    # Gets recipes owned by the logged in user
     recipes = list(mongo.db.Recipes.find({"Owner": session["user"]}))
     return render_template("my_recipes.html", recipes=recipes)
 
 
 @app.route("/view_recipe/<recipe_id>")
 def viewRecipe(recipe_id):
+    # Gets the recipe based on provided ID. Add sellable products,
+    # by searching through the ingredients
     recipe = mongo.db.Recipes.find_one({"_id": ObjectId(recipe_id)})
     products = []
     for ingredient in recipe["Ingredients"]:
@@ -140,8 +149,8 @@ def addRecipe():
         })
 
         # Handle the upload of the recipe image
-        # Credit for the code in README.md (flask.palletprojects.com)
-        # check if the post request has the file part
+        # Credit for below code snippet in README.md (flask.palletprojects.com)
+        # Check if the post request has the file part
         if 'recipeImage' not in request.files:
             flash('No valid file found')
             return redirect(request.url)
@@ -183,7 +192,7 @@ def editRecipe(recipe_id):
         })
 
         # Handle the upload of the recipe image
-        # Credit for the code in README.md (flask.palletprojects.com)
+        # Credit for below code snippet in README.md (flask.palletprojects.com)
         # If there's a new file, upload it, else just keep the original
         file = request.files['recipeImage']
         if file.filename != '' and allowed_file(file.filename):
@@ -196,12 +205,14 @@ def editRecipe(recipe_id):
         mongo.db.Recipes.update({"_id": ObjectId(recipe_id)}, recipe)
         flash("Recipe saved!")
         return redirect(url_for("myRecipes"))
+
     recipe = mongo.db.Recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("edit_recipe.html", recipe=recipe)
 
 
 @app.route("/delete_recipe/<recipe_id>")
 def deleteRecipe(recipe_id):
+    # Delete the recipe specified by the provided ID
     mongo.db.Recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe deleted!")
     return redirect(url_for("myRecipes"))
@@ -209,6 +220,7 @@ def deleteRecipe(recipe_id):
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    # Text based search on Recipes document
     query = request.form.get("query")
     recipes = list(mongo.db.Recipes.find({"$text": {"$search": query}}))
     return render_template('recipes.html', recipes=recipes)

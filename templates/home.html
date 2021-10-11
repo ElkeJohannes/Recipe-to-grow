@@ -9,7 +9,7 @@
 
     <a href="{{ url_for('recipes') }}" class="btn btn-success">Browse recipes</a>
 
-    <!-- Most popular section -->
+    <!-- Most popular carousel -->
     <p>Most popular</p>
     <div class="container-fluid col-lg-5">
         <div id="carouselMostPopular" class="carousel slide" data-bs-ride="carousel">
@@ -55,51 +55,51 @@
         </div>
     </div>
 
-        <!-- Newly added section -->
-        <p>Newly added</p>
-        <div class="container-fluid col-lg-5">
-            <div id="carouselNewlyAdded" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    {% for recipe in recipes %}
-                        {% if loop.first %}
-                            <button type="button" data-bs-target="#carouselNewlyAdded" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Slide 1"></button>
-                        {% else %}
-                            <button type="button" data-bs-target="#carouselNewlyAdded" data-bs-slide-to="{{loop.index0}}"
-                                aria-label="Slide {{loop.index0+1}}"></button>
-                        {% endif %}
-                {% endfor %}
-                </div>
-                <div class="carousel-inner">
-                    {% for recipe in recipes %}
-                        {% if loop.first %}
-                            <div class="carousel-item active">
-                        {% else %}
-                            <div class="carousel-item">
-                        {% endif %}
-                                <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">
-                                    <img src="/static/img/recipes/{{recipe.Image}}"
-                                        class="d-block w-100 carousel-image" alt="placeholder">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>{{ recipe.Title }}</h5>
-                                        <p>{{ recipe.Description }}</p>
-                                    </div>
-                                </a>
-                            </div>
-                    {% endfor %}
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselNewlyAdded"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselNewlyAdded"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+    <!-- Newly added carousel -->
+    <p>Newly added</p>
+    <div class="container-fluid col-lg-5">
+        <div id="carouselNewlyAdded" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                {% for recipe in recipes %}
+                    {% if loop.first %}
+                        <button type="button" data-bs-target="#carouselNewlyAdded" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                    {% else %}
+                        <button type="button" data-bs-target="#carouselNewlyAdded" data-bs-slide-to="{{loop.index0}}"
+                            aria-label="Slide {{loop.index0+1}}"></button>
+                    {% endif %}
+            {% endfor %}
             </div>
+            <div class="carousel-inner">
+                {% for recipe in recipes %}
+                    {% if loop.first %}
+                        <div class="carousel-item active">
+                    {% else %}
+                        <div class="carousel-item">
+                    {% endif %}
+                            <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">
+                                <img src="/static/img/recipes/{{recipe.Image}}"
+                                    class="d-block w-100 carousel-image" alt="placeholder">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ recipe.Title }}</h5>
+                                    <p>{{ recipe.Description }}</p>
+                                </div>
+                            </a>
+                        </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselNewlyAdded"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselNewlyAdded"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+    </div>
 
 </div>
     {% endblock %}

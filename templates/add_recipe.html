@@ -10,16 +10,19 @@
 <div class="row justify-content-center">
     <div class="col-md-5">
         <form method="POST" action="{{ url_for('addRecipe') }}" class="recipeForm" enctype=multipart/form-data>
-
+            <!-- Input: Title -->
             <label for="title" class="form-label">Title*</label>
             <input type="text" name="title" id="title" class="form-control" required>
 
+            <!-- Input: Description -->
             <label for="description" class="form-label">Description</label>
             <input type="textarea" name="description" id="description" class="form-control">
 
+            <!-- Input: Image -->
             <label for="recipeImage" class="form-label">Image*</label>
             <input type="file" id="recipeImage" name="recipeImage" value="Select an image.." class="form-control">
 
+            <!-- Input: Ingredients -->
             <div id="ingredients_div">
                 <div class="form-arrays">
                     <label for="ingredients" class="form-label">Ingredients*</label>
@@ -31,6 +34,7 @@
                 <input type="text" name="ingredients[]" id="ingredients1" class="form-control" required>
             </div>
 
+            <!-- Input: Cooking steps -->
             <div id="cookingSteps_div">
                 <div class="form-arrays">
                     <label for="cookingSteps" class="form-label">Cooking steps*</label>
@@ -42,6 +46,7 @@
                 <input type="text" name="cookingSteps[]" id="cookingSteps1" class="form-control" required>
             </div>
 
+            <!-- Submit button -->
             <button type="submit" class="btn btn-success form-control">Add recipe</button>
         </form>
     </div>

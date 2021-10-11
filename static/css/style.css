@@ -10,6 +10,7 @@
 }
 
 /* -------- Top Navigation */
+
 .main-navbar {
     position: absolute;
     width: 100%;    
@@ -140,8 +141,6 @@ li.nav-item a {
 .form-controls{
     margin-left: auto;
 }
-
-
 
 /* -------- Bootstrap class overrides */
 

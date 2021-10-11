@@ -15,15 +15,13 @@
     <script src="https://kit.fontawesome.com/659d0d4dda.js" crossorigin="anonymous"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- Include JQuery CDN link -->
+    <!-- JQuery CDN link -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
     <title>Recipe to Grow</title>
 </head>
 
 <body>
-
     <header class="main-navbar">
         <!-- Navbar -->
         <nav class="navbar navbar-dark bg-success bg-opacity-75">
@@ -42,9 +40,11 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
             <div class="card card-body navbar-card">
                 <ul class="navbar-nav">
+                    <!-- Always show the All recipes button -->
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ url_for('recipes') }}">All recipes</a>
                     </li>
+                    <!-- Only show if user is logged in -->
                     {% if session.user %}
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ url_for('myRecipes') }}">My recipes</a>
@@ -55,6 +55,7 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ url_for('logout') }}">Logout</a>
                     </li>
+                    <!-- Only show if user is logged out -->
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ url_for('login') }}">Login / Register</a>
@@ -65,7 +66,8 @@
         </div>
     </header>
 
-    <div class="nav-space-filler"></div>
+    <!-- Blank space that's only 'displayed' on > mobile -->
+    <div class="nav-space-filler d-none d-sm-block"></div>
 
     <!-- flash messages -->
     {% with messages = get_flashed_messages() %}
@@ -78,15 +80,13 @@
     {% endif %}
     {% endwith %}
 
+    <!-- Main content to be filled by the templates -->
     <div class="container-fluid col-lg-9">
         {% block mainContent %}
-
         {% endblock %}
     </div>
 
     <!-- Include my own javascript files at the bottom of the page -->
     <script src="{{ url_for('static', filename='javascript/main.js') }}"></script>
-
 </body>
-
 </html>
