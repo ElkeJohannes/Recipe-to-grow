@@ -24,6 +24,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 mongo = PyMongo(app)
 
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -32,20 +33,20 @@ def allowed_file(filename):
 @app.route("/")
 def home():
     recipes = list(mongo.db.Recipes.find())
-    return render_template('home.html', recipes = recipes)
+    return render_template('home.html', recipes=recipes)
 
 
 @app.route("/recipes")
 def recipes():
     recipes = list(mongo.db.Recipes.find())
-    return render_template('recipes.html', recipes = recipes)
+    return render_template('recipes.html', recipes=recipes)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         USERNAME = request.form.get("username").lower()
-        
+
         # check if username is already in use in db
         existing_user = mongo.db.Users.find_one(
             {"username": USERNAME})
@@ -56,7 +57,7 @@ def register():
 
         register = {
             "Firstname": request.form.get('firstname'),
-            "Lastname": request.form.get('lastname'),            
+            "Lastname": request.form.get('lastname'),
             "Username": USERNAME,
             "Password": generate_password_hash(request.form.get("password")),
             "IsAdmin": False
@@ -83,14 +84,15 @@ def login():
             if check_password_hash(existing_user["Password"], PASSWORD):
                 # put the new user into session cookie
                 session["user"] = USERNAME
-                flash("Welcome {} {}".format(existing_user['Firstname'], existing_user['Lastname']))
-                return redirect(url_for("myRecipes"))                
+                flash("Welcome {} {}".format(existing_user['Firstname'],
+                                             existing_user['Lastname']))
+                return redirect(url_for("myRecipes"))
             else:
                 # invalid password match
                 flash("Incorrect Username and\or Password")
                 return redirect(url_for("login"))
 
-        else: 
+        else:
             # username doesn't exist
             flash("Incorrect Username and\or Password")
             return redirect(url_for("login"))
@@ -109,7 +111,7 @@ def logout():
 @app.route("/my_recipes")
 def myRecipes():
     recipes = list(mongo.db.Recipes.find({"Owner": session["user"]}))
-    return render_template("my_recipes.html", recipes = recipes)
+    return render_template("my_recipes.html", recipes=recipes)
 
 
 @app.route("/view_recipe/<recipe_id>")
@@ -118,7 +120,8 @@ def viewRecipe(recipe_id):
     products = []
     for ingredient in recipe["Ingredients"]:
         products += mongo.db.Products.find({"$text": {"$search": ingredient}})
-    return render_template("view_recipe.html", recipe = recipe, products=products)
+    return render_template("view_recipe.html", recipe=recipe,
+                           products=products)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
@@ -163,7 +166,7 @@ def addRecipe():
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
-def editRecipe(recipe_id):  
+def editRecipe(recipe_id):
     if request.method == "POST":
         recipeToEdit = mongo.db.Recipes.find_one({"_id": ObjectId(recipe_id)})
         # Get the info from the form and add some additional info
@@ -194,7 +197,7 @@ def editRecipe(recipe_id):
         flash("Recipe saved!")
         return redirect(url_for("myRecipes"))
     recipe = mongo.db.Recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("edit_recipe.html", recipe = recipe)
+    return render_template("edit_recipe.html", recipe=recipe)
 
 
 @app.route("/delete_recipe/<recipe_id>")
@@ -208,7 +211,7 @@ def deleteRecipe(recipe_id):
 def search():
     query = request.form.get("query")
     recipes = list(mongo.db.Recipes.find({"$text": {"$search": query}}))
-    return render_template('recipes.html', recipes = recipes)
+    return render_template('recipes.html', recipes=recipes)
 
 
 if __name__ == "__main__":
