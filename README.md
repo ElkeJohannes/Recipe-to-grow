@@ -98,10 +98,11 @@ The page is designed around basic colours, mainly in the green spectrum. This is
 |2|Edit recipe|Users can edit their own recipes when logged in|
 |3|Delete recipe|Users can delete their own recipes when logged in|
 |4|View recipe|View an individual recipe|
-|5|Overview|See all recipes on the site|
-|6|Search|Search through all recipes on the site|
+|5|Search|Search through all recipes on the site|
+|6|Search - Reset|Reset the search, to view all recipes again|
 |7|Register|Register for an account to contribute to the site|
-
+|8|Login\logout|Allows recipes to be assigned and managed by users|
+|9|Linked Products|Seeds and plants appropriate to the recipe are shown underneath the recipe|
 
 #### **<ins>Future features</ins>**
 |#|Name|Description|
@@ -110,7 +111,6 @@ The page is designed around basic colours, mainly in the green spectrum. This is
 |2|More profile content|More profile content features like an avatar and the option to change password.|
 |3|Favorites|Mark a recipe as a favorite to save it to your profile|
 |4|Categories|Recipes are put into categories for easier searching|
-
 
 ---
 
