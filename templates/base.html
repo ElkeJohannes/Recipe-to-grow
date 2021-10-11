@@ -64,19 +64,16 @@
 
     <div class="nav-space-filler"></div>
 
-    <section>
-        <!-- flash messages -->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
         {% for message in messages %}
-        <div class="row bg-info flash-messages justify-content-center">
-            <h4 class="text-center">--- {{ message }} ---</h4>
-        </div>
+            <section class="row bg-info flash-messages justify-content-center">
+                <h4 class="text-center">--- {{ message }} ---</h4>
+            </section>
         {% endfor %}
-        {% endif %}
-        {% endwith %}
-    </section>
-
+    {% endif %}
+    {% endwith %}
 
     <div class="container-fluid col-lg-9">
         {% block mainContent %}
