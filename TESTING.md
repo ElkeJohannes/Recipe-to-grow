@@ -15,15 +15,16 @@
 
 ## &rarr; **Code validation**
 - Tested for valid HTML code using [w3 validator](https://validator.w3.org/nu/)<br>
-<img src="assets/screenshots/html-validation.png" width="400px" height="200px" alt="Validation tests - HTML">
+<img src="static/img/html-validation.png" width="400px" height="270px" alt="Validation tests - HTML">
 
 - Tested for valid CSS code using [Jigsaw validator](https://jigsaw.w3.org/css-validator/)<br>
-<img src="assets/screenshots/css-validation.png" width="400px" height="150px" alt="Validation tests - CSS"><br>
-    ** There were 5 warnings reported. These are all because I've chosen to use CSS variables.<br>
-        <img src="assets/screenshots/css-validation-warnings.png" width="300px" height="150px" alt="Validation tests - CSS validation warnings">
+<img src="static/img/css-validation.png" width="400px" height="150px" alt="Validation tests - CSS"><br>
 
 - Tested for valid Javascript using [Jshint](https://jshint.com/)<br>
-<img src="assets/screenshots/jshint-validation.png" width="500px" height="250px" alt="Validation tests - Javascript linter">
+<img src="static/img/javascript-validation.png" width="500px" height="240px" alt="Validation tests - Javascript linter">
+
+- Tested for PEP8 compliance using [pep8online](http://pep8online.com/)<br>
+<img src="static/img/python-validation.png" width="500px" height="180px" alt="Validation tests - Python PEP8 validation">
 
 ---
 
