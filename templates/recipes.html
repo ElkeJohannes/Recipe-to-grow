@@ -4,9 +4,21 @@
 
 <div class="row">
     <div class="col-md-11 recipes-header">
-        <div>
-            <input type="text" placeholder="Search recipes...">
-            <a href="#" class="btn btn-success">Search!</a>
+        <div class="row">
+            <form action="{{ url_for('search') }}" method="post" class="col">
+                <div class="row">
+                    <div class="col">
+                        <label for="query" class="d-none"></label>
+                        <input type="text" name="query" id="query" minlength="3" required>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                        <a href="{{ url_for('recipes') }}" class="btn btn-danger">Reset</a>
+                    </div>
+                </div>
+            </form>
         </div>
         <h4>All recipes</h4>
     </div>
