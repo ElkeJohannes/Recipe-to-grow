@@ -5,6 +5,7 @@
 ---
 
 Recipe to grow is a website where users can share their favorite plant based recipes. Additionally, users can find links to products in my webshop (external site) for plants, that are appropriate to the recipe. 
+--- Disclaimer: Data on the site, including seeds and plants, is dummy data. Recipes are copied from other sites and will be removed after succesful grading of the project.
 
 **-- [See live site on Heroku](http://recipe-to-grow.herokuapp.com/) --**
 
@@ -34,7 +35,7 @@ Recipe to grow is a website where users can share their favorite plant based rec
 </details>
 
 **<details><summary>Testing</summary>**
-  - [Test documentation](#)
+  - [Test documentation](https://github.com/ElkeJohannes/Recipe-to-grow/blob/main/TESTING.md)
 </details>
 
 **<details><summary>Deployment</summary>**
@@ -158,6 +159,7 @@ The page is designed around basic colours, mainly in the green spectrum. This is
 
 ### **<ins>Text</ins>**
 - Vegan mapo tofu recipe taken from: [NY Times](https://cooking.nytimes.com/recipes/1017358-vegan-mapo-tofu) 
+- Several more recipes taken from: [Jamie Oliver](https://www.jamieoliver.com/recipes/category/special-diets/vegan/)
 
 ### **<ins>Media</ins>**
 - All images taken from the sites where the recipes came from
