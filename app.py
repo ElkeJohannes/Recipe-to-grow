@@ -35,9 +35,12 @@ def allowed_file(filename):
 
 @app.route("/")
 def home():
-    # Gets all recipes and renders the home page
-    recipes = list(mongo.db.Recipes.find())
-    return render_template('home.html', recipes=recipes)
+    # Gets most recent recipes and most popular recipes 
+    # Passes it through to be used for the carousels
+    mostPopularRecipes = list(mongo.db.Recipes.find().limit(5).sort("TimesViewed",-1))
+    mostRecentRecipes = list(mongo.db.Recipes.find().limit(5))
+    return render_template('home.html', mostPopularRecipes=mostPopularRecipes,
+                           mostRecentRecipes=mostRecentRecipes)
 
 
 @app.route("/recipes")
@@ -129,6 +132,12 @@ def viewRecipe(recipe_id):
     products = []
     for ingredient in recipe["Ingredients"]:
         products += mongo.db.Products.find({"$text": {"$search": ingredient}})
+        
+    # Ups the counter for TimesViewed
+    timesViewed = recipe["TimesViewed"] + 1
+    recipe.update({"TimesViewed":timesViewed})
+    mongo.db.Recipes.update({"_id": ObjectId(recipe["_id"])}, recipe)
+
     return render_template("view_recipe.html", recipe=recipe,
                            products=products)
 
