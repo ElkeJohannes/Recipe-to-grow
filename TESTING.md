@@ -29,32 +29,21 @@
 ---
 
 ## &rarr; **User story tests**
-- I want to receive instructions on how to play the game.
-    * When loading the game for the first time, you are presented with a tutorial text and gif.
-    <img src="assets/screenshots/user-story-tutorial.png" width="400px" height="300px" alt="User story - Tutorial">
-- I want to revisit the instructions, should I feel the need. 
-    * There is a button on the bottom right (mobile), or top right (> mobile) labeled 'How to play'. When clicking on this button, the tutorial window will appear again. 
+As a non-contributing visitor to the site I want to:
+  - view all available recipes
+    * When on the home page, you can click on the 'Browse recipes' button. This page is also accesible from the navigation menu.
+  - view the most popular recipes
+    * When on the home page, there is a carousel displaying the most popular recipes
+  - view the most recently added recipes
+    * When on the home page, there is a carousel displaying the most recently added recipes
 
-        | <div align="center">Mobile</div> | <div align="center">> Mobile</div> |
-        |-|-|
-        |<img src="assets/screenshots/user-story-how-to-play-bottom.png" width="200px" height="300px" alt="User story - How to play mobile">|<img src="assets/screenshots/user-story-how-to-play-top.png" width="400px" height="300px" alt="User story - How to play mobile plus">|
-
-- I want to be able to keep track of how I'm doing in the current game.
-    * Between the game title and the game area, there is an informational panel. The panel shows you the current game speed, level and your score so far.<br>    
-        <img src="assets/screenshots/user-story-game-info.png" width="300px" height="200px" alt="User story - Game info">
-- I want to be able to view my highscores.
-    * There is a button on the bottom left (mobile), or top right (> mobile) labeled 'View highscores'. When clicking on this button, the highscores window will appear.
-
-        | <div align="center">Mobile</div> | <div align="center">> Mobile</div> |
-        |-|-|
-        |<img src="assets/screenshots/user-story-highscores-bottom.png" width="200px" height="300px" alt="User story - Highscores mobile">|<img src="assets/screenshots/user-story-highscores-top.png" width="400px" height="300px" alt="User story - Highscores mobile plus">|
-
-- I want to be able to start a new game, after finishing one.
-    * When you click on the wrong shape, the game will end and you will be presented with a screen to submit your highscore. You can either choose to submit your score, after which you will be taken to the highscore screen, where there is a play again button:
-        <img src="assets/screenshots/user-story-play-again.png" width="200px" height="300px" alt="User story - Play again button">
-
-        Or you can close the submit highscore screen using the (X) close button, in which case you can click on the default Play button:
-        <img src="assets/screenshots/user-story-play.png" width="200px" height="300px" alt="User story - Play button">
+As a contributing visitor to the site I want to:
+  - add a recipe to the site
+    * After logging in, there is an additional option available on the menu to add a recipe. The 'Add recipe' page is also accesible from the 'My recipes' page.
+  - edit my own recipes
+    * After logging in, you can edit your own recipes from the 'My recipes' page. To do so, you can click the edit icon behind the recipe name.
+  - delete my recipes
+    * After logging in, you can delete your own recipes from the 'My recipes' page. To do so, you can click the delete icon behind the recipe name.
 
 ---
 
