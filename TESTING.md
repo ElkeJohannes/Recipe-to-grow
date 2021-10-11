@@ -52,19 +52,25 @@ In all below testing actions, it is assumed you have opened the website on **any
 
 |Test name|Actions|
 |-|-|
-|<ins>View highscores button</ins>|- Click on the 'View highscores' button <br>- Confirm a window opens, listing highscores|
-|<ins>View highscores - Close button</ins>|- Click on the (X) button on the top right of this screen<br>- Confirm the highscores window closes|
-|<ins>View highscores - Play again button</ins>|- Click on the 'View highscores' button <br>- Click on the 'Play again' button<br>- Confirm the highscores screen closes, and the game starts playing, highlighting 2 shapes|
-|<ins>How to play button</ins>|- Click on the 'How to play' button<br>- Confirm the tutorial window opens, with a gif running|
-|<ins>How to play - Close button</ins>|- Click on the (X) button on the top right of this screen<br>- Confirm the tutorial window closes|
-|<ins>Play button</ins>|- Click on the play button<br>- Confirm the game starts running, and 2 shapes are highlighted|
-|<ins>Sounds - Playing</ins>|- Click on the play button<br>- Confirm music is playing during the highlighting of the shapes<br>- Play through a number of additional rounds<br>- Confirm this music is always playing during the highlighting|
-|<ins>Sounds - Correct</ins>|- Click on the play button<br>- Once possible, click on the correct shape<br>- Confirm a confirming sound is played|
-|<ins>Sounds - Incorrect</ins>|- Click on the play button<br>- Once possible, click on one of the incorrect shapes<br>- Confirm a game over sound is played|
-|<ins>Game results</ins>|- Click on the play button<br>- Once possible, click on on of the incorrect shapes<br>- Confirm the game results window appears|
-|<ins>Game results - Close button</ins>|- Click on the play button<br>- Once possible, click on on of the incorrect shapes<br>- Once the Game results window appears, click on the (X) button on the top right of this screen<br>- Confirm the Game results windows closes|
-|<ins>Game results - Submit highscore button</ins>|- Click on the play button<br>- Once possible, click on on of the incorrect shapes<br>- Once the Game results window appears, fill any name in and click on the 'Submit highscore' button<br>- Confirm you are taken to the Highscores window, and the name submitted appears|
-|<ins>Footer link</ins>|- Click on the name 'Elke Harmanny' in the footer<br>- Confirm you are taken to the website: https://elkejohannes.github.io/online-resume/|
+|<ins>Browse recipes button</ins>|- Click on the 'Browse recipes' button <br>- Confirm you are taken to the 'All recipes' page|
+|<ins>Most popular - carousel auto play</ins>|- Ensure you are on the home page, with the 'Most popular' carousel in sight<br>- Confirm the carousel changes recipes automatically, showing a selection of recipes|
+<ins>Most popular - carousel navigation buttons</ins>|- Ensure you are on the home page, with the 'Most popular' carousel in sight<br>- Confirm the carousel changes recipes whenever you click on one of the arrows on the left hand or right hand of the image|
+|<ins>Newly added - carousel auto play</ins>|- Ensure you are on the home page, with the 'Newly added' carousel in sight<br>- Confirm the carousel changes recipes automatically, showing a selection of recipes|
+<ins>Newly added - carousel navigation buttons</ins>|- Ensure you are on the home page, with the 'Newly added' carousel in sight<br>- Confirm the carousel changes recipes whenever you click on one of the arrows on the left hand or right hand of the image|
+|<ins>View recipe</ins>|- Click on any of the recipes on either the 'Most popular' or 'Newly added' carousels<br>- Confirm the 'View recipe' page opens, and you can now see the details of the recipe you clicked|
+|<ins>Recipe to grow - navbar link</ins>|- Click on the header 'Recipe to grow' on the top left of the page in the navigation bar<br>- Confirm you are taken to the home page|
+|<ins>Hamburger menu</ins>|- Click on the hamburger menu on the top right of the page<br>- Confirm the menu expands below the hamburger icon|
+|<ins>Menu Link - All recipes</ins>|- Click on the hamburger menu<br> - Click on the 'All recipes' link<br>- Confirm the 'All recipes' page opens|
+|<ins>Menu Link - Login \ register</ins>|- Click on the hamburger menu<br> - Click on the 'Login \ register' link<br>- Confirm the 'Login \ register' page opens|
+|<ins>Menu Link - My recipes</ins>|- While logged in, click on the 'My recipes' link from the hamburger menu<br> - Confirm you are taken to the 'My recipes' page|
+|<ins>Menu Link - Add recipe</ins>|- While logged in, click on the 'Add recipe' link from the hamburger menu<br> - Confirm you are taken to the 'Add recipe' page|
+|<ins>Menu Link - Logout</ins>|- While logged in, click on the 'Logout' link from the hamburger menu<br> - Confirm you are taken to the 'Home' page and a message is displayed, saying you are logged out|
+|<ins>Search</ins>|- Open the 'All recipes' page<br> - Fill in a word that you know exists in the title or description of a recipe<br> - Click on the green 'Search' button or press enter on your keyboard<br>- Confirm only recipes containing that word are diplayed|
+|<ins>Search </ins>|- After searching, using the steps described above, click the red 'Reset' button<br>- Confirm all recipes are shown again|
+|<ins>Register</ins>|- Click on the hamburger menu<br> - Click on the 'Login \ register' link<br> - Click on the blue 'or Register' button<br> - Fill in the fields, and click on the green 'Register' button<br>- Confirm your are taken to the 'My recipes' page, and a message is displayed saying 'Registration succesful!'|
+|<ins>Add recipe</ins>|- While on the 'My recipes' page, click on the 'Add recipe' button, you can alternatively use the menu link<br> - Fill in the required fields and then click the green 'Add recipe' button below the form<br>- Confirm you are taken to the 'My recipe' page, and the just created recipe is now showing in the list|
+|<ins>Edit recipe</ins>|- While logged in, browse to the 'My recipes' page<br>- Click on the edit button (pencil icon) next to a recipe<br> - Confirm you are taken to the 'Edit recipe' page with the selected recipe showing<br> - Make changes to one or more fields and click the green 'Save' button<br> - Confirm you are brought back to the 'My recipes' page with a message saying 'Edit succesful'<br> - Click on the just edited recipe<br> - Confirm the recipe shows correctly, with the changes made visible|
+|<ins>Delete recipe</ins>|- While logged in, browse to the 'My recipes' page<br> - Click on the delete button (trash icon) next to a recipe<br> - Confirm a message saying 'Recipe deleted' shows, and the recipe dissapears from the list|
 
 ---
 
@@ -75,46 +81,28 @@ For testing, 2 device types are defined:
 - Mobile+
     * Any device with a horizontal screen width **larger** then 567px
 
-|1|Green dots on Hover|
+|1|Add recipe|
 |-|-|
-- Open the website on a **mobile+** device
-- Click on the play button
-- After the animation finishes, hover the mouse over the individual shapes
-- Confirm an outline of green dots appear around the hovered over shape when doing so
+- 
 
-|2|Highscores|
+|2|Edit recipe|
 |-|-|
-- Open the website on **any** device
-- Click or tap on the button that says 'View highscores'
-- Confirm an overlay appears, with a screen that shows the local highscores
 
-|3|Responsive design|
+|3|Delete recipe|
 |-|-|
-- Open the website on a **mobile+** device
-- Confirm the 'View highscores' and 'How to play' buttons appear at the top right of the game area
-- Open the browsers' developer tools (usually F12 on a windows computer)
-- Toggle the device toolbar (usually 'Ctrl + shift + M' on a windows computer)
-- Set the device width to a **mobile** device size
-- Confirm the 'View highscores' and 'How to play' buttons appear below the game area
 
-|4|Tutorial with gif|
+|4|View recipe|
 |-|-|
-- Open the website on **any** device for the first time (alternatively, you can delete the website's cookies)
-- Confirm the tutorial is shown before you can start playing a game.
 
-|5|Current game information|
+|5|Overview|
 |-|-|
-- Open the website on a **mobile** device
-- Confirm the Game information is visible centered above the game area
-- Start playing a game, by tapping on the 'Play' button
-- Tap on 1 correct shape
-- Confirm the 'score' counter is incremented by 1
-- Correctly finish the round, by clicking on the remaining correct shapes
-- Confirm the level increases after finishing each round
-- Play through several rounds
-- Confirm the speed increases every 3 levels
-- Open the website on a **mobile+** device
-- Confirm the game information is now visible above the game area, aligned to the left side
+
+|6|Search|
+|-|-|
+
+|7|Register|
+|-|-|
+
 
 ---
 
