@@ -8,23 +8,29 @@
 
 <div class="col-md-5 my-recipes-list">
     <ul>
-        {% for recipe in recipes %}
-
+        {% if recipes|length == 0 %}
         <li>
             <div class="recipe-listing">
-                <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">{{ recipe.Title }}</a>
-                <div class="recipe-controls">
-                    <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="control">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="control">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                </div>
+                No recipes yet, but you can start adding right now
             </div>
         </li>
-
-        {% endfor %}
+        {% else %}
+            {% for recipe in recipes %}
+                <li>
+                    <div class="recipe-listing">
+                        <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">{{ recipe.Title }}</a>
+                        <div class="recipe-controls">
+                            <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="control">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="control">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        {% endif %}
     </ul>
 </div>
 
