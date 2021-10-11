@@ -47,19 +47,6 @@
                 {% endfor %}
             </div>
 
-            <div id="tipsTricks_div">
-                <div class="form-arrays">
-                    <label for="tipsTricks" class="form-label">Tips and Tricks</label>
-                    <div class="form-controls">
-                        <a href="#" id="tipsTricks_plus" class=""><i class="fas fa-plus-circle"></i></a>
-                        <a href="#" id="tipsTricks_minus"><i class="fas fa-minus-circle"></i></a>
-                    </div>
-                </div>
-                {% for tipTrick in recipe.TipsTricks %}
-                    <input type="text" name="tipsTricks[]" value="{{tipTrick}}" class="form-control" required>
-                {% endfor %}
-            </div>
-
             <button type="submit" class="btn btn-success form-control">Edit</button>
         </form>
     </div>
