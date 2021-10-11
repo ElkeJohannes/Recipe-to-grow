@@ -20,7 +20,14 @@
             {% for recipe in recipes %}
                 <li>
                     <div class="recipe-listing">
-                        <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">{{ recipe.Title }}</a>
+                        <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">
+                            <!-- If title contains more then 40 chars, trim it -->
+                            {% if recipe.Title|length > 40 %}
+                                {{ recipe.Title[0:38] }}..
+                            {% else %}
+                                {{ recipe.Title }}
+                            {% endif %}
+                        </a>
                         <div class="recipe-controls">
                             <!-- Edit button -->
                             <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="control">
