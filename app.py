@@ -115,7 +115,10 @@ def myRecipes():
 @app.route("/view_recipe/<recipe_id>")
 def viewRecipe(recipe_id):
     recipe = mongo.db.Recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("view_recipe.html", recipe = recipe)
+    products = []
+    for ingredient in recipe["Ingredients"]:
+        products += mongo.db.Products.find({"$text": {"$search": ingredient}})
+    return render_template("view_recipe.html", recipe = recipe, products=products)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])

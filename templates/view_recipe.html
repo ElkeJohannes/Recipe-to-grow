@@ -27,6 +27,18 @@
         </div>
     </div>
 
-
+    <!-- Advertisment of sellable products -->
+    <div class="row products">
+        <!-- <div class="col"> -->
+            <h5>Grow the ingredients yourself:</h5>
+            {% for product in products %}
+                <div class="col">
+                    <div><a href="#">{{product.Name}}</a></div>
+                    <div>{{product.Amount}}</div>
+                    <div>{{product.Price}}</div>
+                </div>
+            {% endfor %}
+        <!-- </div> -->
+    </div>
 
 {% endblock %}
