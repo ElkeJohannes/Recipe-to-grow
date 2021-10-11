@@ -100,8 +100,8 @@ li.nav-item a {
 .singleRecipeImage{
     margin: auto;
     display: flex;
-    min-width: 70%;
-    max-height: 70%;
+    max-width: inherit;
+    max-height: inherit;
 }
 
 .products{
