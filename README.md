@@ -7,7 +7,7 @@
 Recipe to grow is a website where users can share their favorite plant based recipes. Additionally, users can find links to products in my webshop (external site) for plants, that are appropriate to the recipe. 
 --- Disclaimer: Data on the site, including seeds and plants, is dummy data. Recipes are copied from other sites and will be removed after succesful grading of the project.
 
-**-- [See live site on Heroku](http://recipe-to-grow.herokuapp.com/) --**
+**-- [See live site on Heroku](https://recipe-to-grow.herokuapp.com/) --**
 
 </div>
 
@@ -165,5 +165,6 @@ The page is designed around basic colours, mainly in the green spectrum. This is
 - All images taken from the sites where the recipes came from
 
 ### **<ins>Acknowledgements</ins>** 
+- Credit to CI for the user authentication and baasic querie structure (doubt I really have to specify this, but just to be sure)
 - Info taken from: [Flask documentation website](https://flask.palletsprojects.com/en/2.0.x/patterns/fileuploads/) on how to do file uploads.
 - [This stack overflow question](https://stackoverflow.com/questions/47083403/extracting-input-from-all-input-boxes-into-a-list-using-flask) on how to handle multiple input boxes into an array.
