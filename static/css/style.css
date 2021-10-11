@@ -142,6 +142,10 @@ li.nav-item a {
     margin-left: auto;
 }
 
+.hover_hand:hover{
+    cursor: pointer;    
+}
+
 /* -------- Bootstrap class overrides */
 
 .card {

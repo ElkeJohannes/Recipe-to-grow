@@ -28,8 +28,8 @@
                 <div class="form-arrays">
                     <label for="ingredients" class="form-label">Ingredients*</label>
                     <div class="form-controls">
-                        <a href="#" id="ingredients_plus" class=""><i class="fas fa-plus-circle"></i></a>
-                        <a href="#" id="ingredients_minus"><i class="fas fa-minus-circle"></i></a>
+                        <div id="ingredients_plus" class="hover_hand d-inline"><i class="fas fa-plus-circle"></i></div>
+                        <div id="ingredients_minus" class="hover_hand d-inline"><i class="fas fa-minus-circle"></i></div>
                     </div>
                 </div>
                 {% for ingredient in recipe.Ingredients %}
@@ -42,8 +42,8 @@
                 <div class="form-arrays">
                     <label for="cookingSteps" class="form-label">Cooking steps*</label>
                     <div class="form-controls">
-                        <a href="#" id="cookingSteps_plus" class=""><i class="fas fa-plus-circle"></i></a>
-                        <a href="#" id="cookingSteps_minus"><i class="fas fa-minus-circle"></i></a>
+                        <div id="cookingSteps_plus" class="hover_hand d-inline"><i class="fas fa-plus-circle"></i></div>
+                        <div id="cookingSteps_minus" class="hover_hand d-inline"><i class="fas fa-minus-circle"></i></div>
                     </div>
                 </div>
                 {% for cookingStep in recipe.CookingSteps %}
