@@ -42,12 +42,27 @@ li.nav-item a {
     text-align: center;
 }
 
+.carousel-container{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.carousel-container h5{
+    margin-bottom: 5px;
+}
+
 .carousel-image{
     width: 300px;
     height: 300px;
 }
 
-.carousel-caption p,h5 {
+.carousel-caption{
+    width: 95%;
+    right: 2.5%;
+    left: 2.5%;
+}
+
+.carousel-caption h5,p {
     background-color: white;
     color: black;
     margin-bottom: 0px;
