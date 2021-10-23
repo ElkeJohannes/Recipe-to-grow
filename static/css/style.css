@@ -55,21 +55,35 @@ li.nav-item a {
     margin-bottom: 5px;
 }
 
+.carousel-item{
+    height: 250px;
+}
+
+.img-container{
+    height: 75%;
+    width: 95%;
+    margin: auto;
+}
+
 .carousel-image{
-    width: 300px;
-    height: 300px;
+    height: 100%;
+    max-width: 100%;
 }
 
 .carousel-caption{
-    width: 95%;
-    right: 2.5%;
-    left: 2.5%;
+    right: initial;
+    left: initial;
+    bottom: 10px;
+    padding: 0px;
+    margin: 5px;
+    width: 100%;
 }
 
 .carousel-caption h5,p {
-    background-color: white;
     color: black;
     margin-bottom: 0px;
+    white-space:nowrap;
+    overflow:hidden;
 }
 
 /* -------- Recipes page */
@@ -176,6 +190,10 @@ li.nav-item a {
     margin: 5px;
 }
 
+.carousel-indicators{
+    margin-bottom: initial;
+}
+
 /* -------- Media Queries */
 
 @media (min-width: 992px) {
@@ -183,5 +201,9 @@ li.nav-item a {
         margin-left: calc(83.33333333% - 110px);
         max-width: initial;
         align-items: center;
+    }
+
+    .carousel-item{
+        height: 275px;
     }
 }
