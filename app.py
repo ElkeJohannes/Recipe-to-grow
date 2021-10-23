@@ -37,7 +37,7 @@ def allowed_file(filename):
 def home():
     # Gets most recent recipes and most popular recipes 
     # Passes it through to be used for the carousels
-    mostPopularRecipes = list(mongo.db.Recipes.find().limit(1).sort("TimesViewed",-1))
+    mostPopularRecipes = list(mongo.db.Recipes.find().limit(5).sort("TimesViewed",-1))
     mostRecentRecipes = list(mongo.db.Recipes.find().limit(5))
     return render_template('home.html', mostPopularRecipes=mostPopularRecipes,
                            mostRecentRecipes=mostRecentRecipes)

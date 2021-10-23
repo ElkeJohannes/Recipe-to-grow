@@ -62,7 +62,7 @@ li.nav-item a {
 .img-container{
     height: 75%;
     width: 95%;
-    margin: auto;
+    margin: 0px auto;
 }
 
 .carousel-image{
@@ -71,19 +71,30 @@ li.nav-item a {
 }
 
 .carousel-caption{
-    right: initial;
-    left: initial;
     bottom: 10px;
     padding: 0px;
-    margin: 5px;
-    width: 100%;
+    margin: 5px auto;
 }
 
-.carousel-caption h5,p {
+.carousel-caption h5,
+.carousel-caption div {
     color: black;
-    margin-bottom: 0px;
+    margin: 0px auto;
     white-space:nowrap;
     overflow:hidden;
+    width: inherit;    
+}
+
+.carousel-caption .row *{
+    padding: 0px;
+    margin: 0px 3%;
+}
+
+.overflow-dots{
+    max-width: fit-content;
+    padding: 5px 0px 0px 5px;
+    line-height: 1rem;
+    margin: auto !important;
 }
 
 /* -------- Recipes page */

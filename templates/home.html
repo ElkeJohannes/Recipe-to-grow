@@ -3,7 +3,7 @@
 {% block mainContent %}
 <div class="home-main-content">
     <header class="text-success">
-        <h1>Welcome to recipe to grow!</h1>
+        <h1>Welcome to recipe to grow!</h1>        
         <h3>Where we share our love for plants, and the foods you can make of them</h3>
     </header>
 
@@ -17,13 +17,11 @@
                 <div class="carousel-indicators">
                     {% for recipe in mostPopularRecipes %}
                         {% if loop.first %}
-                            <button type="button" data-bs-target="#carouselMostPopular" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1">
-                            </button>
+                            <button type="button" data-bs-target="#carouselMostPopular" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
                         {% else %}
-                            <button type="button" data-bs-target="#carouselMostPopular" 
-                                data-bs-slide-to="{{loop.index0}}" aria-label="Slide {{loop.index0+1}}">
-                            </button>
+                            <button type="button" data-bs-target="#carouselMostPopular" data-bs-slide-to="{{loop.index0}}"
+                                aria-label="Slide {{loop.index0+1}}"></button>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -38,16 +36,20 @@
                                     <div class="img-container">
                                         <img src="/static/img/recipes/{{recipe.Image}}" class="carousel-image"
                                             alt="placeholder">
-                                    </div>               
+                                    </div>
                                     <div class="carousel-caption">
-                                        <h5 class="check-overflow">
-                                            {{ recipe.Title }}
-                                            <span class="d-none">...</span>
-                                        </h5>
-                                        <p class="check-overflow">
-                                            {{ recipe.Description }}
-                                            <span class="d-none">...</span>
-                                        </p>
+                                        <div class="row">
+                                            <h5 class="check-overflow col">
+                                                {{ recipe.Title }}
+                                            </h5>
+                                            <div class="d-none col overflow-dots">...</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="check-overflow col">
+                                                {{ recipe.Description }}                                                
+                                            </div>
+                                            <div class="d-none overflow-dots col">...</div>
+                                        </div>                                        
                                     </div>
                                 </a>
                             </div>
@@ -93,15 +95,19 @@
                                         <img src="/static/img/recipes/{{recipe.Image}}" class="carousel-image"
                                             alt="placeholder">
                                     </div>
-                                    <div class="carousel-caption justify-content-around">
-                                        <h5 class="check-overflow">
-                                            {{ recipe.Title }}
-                                            <span class="d-none">...</span>
-                                        </h5>
-                                        <p class="check-overflow">
-                                            {{ recipe.Description }}
-                                            <span class="d-none">...</span>
-                                        </p>
+                                    <div class="carousel-caption">
+                                        <div class="row">
+                                            <h5 class="check-overflow col">
+                                                {{ recipe.Title }}
+                                            </h5>
+                                            <div class="d-none col overflow-dots">...</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="check-overflow col">
+                                                {{ recipe.Description }}                                                
+                                            </div>
+                                            <div class="d-none overflow-dots col">...</div>
+                                        </div>                                        
                                     </div>
                                 </a>
                             </div>
