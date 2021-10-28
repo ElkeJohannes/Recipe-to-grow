@@ -48,6 +48,8 @@ function check_overflow() {
     for (let i = 0;i < elements.length; i++) {
         let element = elements[i];
         if (element.scrollWidth > element.clientWidth) {
+            console.log("wider then client");
+            console.log(element.scrollWidth, element.clientWidth);
             $(element).siblings().removeClass('d-none');
         } else {    
             $(element).siblings().addClass('d-none');
