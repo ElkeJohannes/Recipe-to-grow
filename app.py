@@ -1,10 +1,11 @@
-from datetime import date
+import datetime
 import os
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import pymongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from flask import render_template
@@ -37,8 +38,8 @@ def allowed_file(filename):
 def home():
     # Gets most recent recipes and most popular recipes 
     # Passes it through to be used for the carousels
-    mostPopularRecipes = list(mongo.db.Recipes.find().limit(5).sort("TimesViewed",-1))
-    mostRecentRecipes = list(mongo.db.Recipes.find().limit(5))
+    mostPopularRecipes = list(mongo.db.Recipes.find().limit(5).sort("TimesViewed", pymongo.DESCENDING))
+    mostRecentRecipes = list(mongo.db.Recipes.find().limit(5).sort("DateAdded", pymongo.DESCENDING))
     return render_template('home.html', mostPopularRecipes=mostPopularRecipes,
                            mostRecentRecipes=mostRecentRecipes)
 
@@ -150,7 +151,7 @@ def addRecipe():
             "Title": request.form.get("title"),
             "Description": request.form.get("description"),
             "TimesViewed": 0,
-            "DateAdded": date.today().strftime("%d/%m/%Y"),
+            "DateAdded": datetime.datetime.today(),
             "Owner": session["user"],
             "Ingredients": request.form.getlist('ingredients[]'),
             "CookingSteps": request.form.getlist('cookingSteps[]'),
