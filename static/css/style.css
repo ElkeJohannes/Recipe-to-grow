@@ -6,7 +6,7 @@
 }
 
 .control{
-    margin: 5px;
+    margin: auto 5px;
 }
 
 a {
@@ -166,6 +166,19 @@ li.nav-item a {
 
 .recipe-listing{
     display: flex;
+}
+
+.recipe-listing .row {
+    max-width: 80%;
+}
+
+.recipe-listing .row:hover{
+    text-decoration: underline;
+}
+
+.recipe-listing .row a {
+    white-space:nowrap;
+    overflow:hidden;
 }
 
 .recipe-controls{

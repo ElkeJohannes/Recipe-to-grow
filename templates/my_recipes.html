@@ -5,7 +5,7 @@
         <h2>My Recipes</h2>
     </header>
 
-    <div class="col-md-5 my-recipes-list">
+    <div class="col-md-6 my-recipes-list">
         <ul>
             <!-- In case user has no recipes yet -->
             {% if recipes|length == 0 %}
@@ -19,24 +19,23 @@
                 {% for recipe in recipes %}
                     <li>
                         <div class="recipe-listing">
-                            <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}"
-                                aria-label="View this recipe">
-                                <!-- If title contains more then 40 chars, trim it -->
-                                {% if recipe.Title|length > 40 %}
-                                    {{ recipe.Title[0:38] }}..
-                                {% else %}
+                            <div class="row">
+                                <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}"
+                                    aria-label="View this recipe" class="check-overflow col text-success">
                                     {{ recipe.Title }}
-                                {% endif %}
-                            </a>
+                                </a>
+                                <div class="d-none col overflow-dots text-success">...</div>
+                            </div>
+                            
                             <div class="recipe-controls">
                                 <!-- Edit button -->
                                 <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" 
-                                    aria-label="Edit this recipe" class="control">
+                                    aria-label="Edit this recipe" class="control text-success">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <!-- Delete button -->
                                 <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" 
-                                    aria-label="Delete this recipe" class="control">
+                                    aria-label="Delete this recipe" class="control text-success">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
                             </div>
