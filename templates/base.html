@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" 
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
+        rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
@@ -26,11 +27,13 @@
         <!-- Navbar -->
         <nav class="navbar navbar-dark bg-success bg-opacity-75">
             <div class="container-fluid col-lg-9">
-                <a class="navbar-brand" href="{{ url_for('home') }}">Recipe to grow</a>
+                <a class="navbar-brand" href="{{ url_for('home') }}" aria-label="Go to the home page">
+                    Recipe to grow</a>
 
-                <!-- Mobile toggler -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
-                    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Hamburger menu toggler -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -42,24 +45,29 @@
                 <ul class="navbar-nav">
                     <!-- Always show the All recipes button -->
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url_for('recipes') }}">All recipes</a>
+                        <a class="nav-link" aria-current="page" href="{{ url_for('recipes') }}" 
+                            aria-label="Go to all recipes page">All recipes</a>
                     </li>
                     <!-- Only show if user is logged in -->
                     {% if session.user %}
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url_for('myRecipes') }}">My recipes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url_for('addRecipe') }}">Add recipe</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url_for('logout') }}">Logout</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('myRecipes') }}"
+                                aria-label="Go to my recipes page">My recipes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('addRecipe') }}"
+                                aria-label="Go to add recipe page">Add recipe</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('logout') }}"
+                                aria-label="Logout">Logout</a>
+                        </li>
                     <!-- Only show if user is logged out -->
                     {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url_for('login') }}">Login / Register</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('login') }}"
+                                aria-label="Go to login page">Login / Register</a>
+                        </li>
                     {% endif %}
                 </ul>
             </div>
@@ -71,13 +79,13 @@
 
     <!-- flash messages -->
     {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        {% for message in messages %}
-            <section class="row bg-info flash-messages justify-content-center">
-                <h4 class="text-center">--- {{ message }} ---</h4>
-            </section>
-        {% endfor %}
-    {% endif %}
+        {% if messages %}
+            {% for message in messages %}
+                <section class="row bg-info flash-messages justify-content-center">
+                    <h4 class="text-center">--- {{ message }} ---</h4>
+                </section>
+            {% endfor %}
+        {% endif %}
     {% endwith %}
 
     <!-- Main content to be filled by the templates -->

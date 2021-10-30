@@ -1,51 +1,53 @@
 {% extends "base.html" %}
 
 {% block mainContent %}
+    <header class="my-recipes-header">
+        <h2>My Recipes</h2>
+    </header>
 
-<header class="my-recipes-header">
-    <h2>My Recipes</h2>
-</header>
-
-<div class="col-md-5 my-recipes-list">
-    <ul>
-        <!-- In case user has no recipes yet -->
-        {% if recipes|length == 0 %}
-        <li>
-            <div class="recipe-listing">
-                No recipes yet, but you can start adding right now
-            </div>
-        </li>
-        <!-- List each recipe's title -->
-        {% else %}
-            {% for recipe in recipes %}
+    <div class="col-md-5 my-recipes-list">
+        <ul>
+            <!-- In case user has no recipes yet -->
+            {% if recipes|length == 0 %}
                 <li>
                     <div class="recipe-listing">
-                        <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">
-                            <!-- If title contains more then 40 chars, trim it -->
-                            {% if recipe.Title|length > 40 %}
-                                {{ recipe.Title[0:38] }}..
-                            {% else %}
-                                {{ recipe.Title }}
-                            {% endif %}
-                        </a>
-                        <div class="recipe-controls">
-                            <!-- Edit button -->
-                            <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" class="control">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <!-- Delete button -->
-                            <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" class="control">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </div>
+                        No recipes yet, but you can start adding right now
                     </div>
                 </li>
-            {% endfor %}
-        {% endif %}
-    </ul>
-</div>
+            <!-- List each recipe's title -->
+            {% else %}
+                {% for recipe in recipes %}
+                    <li>
+                        <div class="recipe-listing">
+                            <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}"
+                                aria-label="View this recipe">
+                                <!-- If title contains more then 40 chars, trim it -->
+                                {% if recipe.Title|length > 40 %}
+                                    {{ recipe.Title[0:38] }}..
+                                {% else %}
+                                    {{ recipe.Title }}
+                                {% endif %}
+                            </a>
+                            <div class="recipe-controls">
+                                <!-- Edit button -->
+                                <a href="{{ url_for('editRecipe', recipe_id=recipe._id) }}" 
+                                    aria-label="Edit this recipe" class="control">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <!-- Delete button -->
+                                <a href="{{ url_for('deleteRecipe', recipe_id=recipe._id) }}" 
+                                    aria-label="Delete this recipe" class="control">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
 
-<!-- Add recipe button -->
-<a href="{{url_for('addRecipe')}}" class="btn btn-success">Add recipe</a>
-
+    <!-- Add recipe button -->
+    <a href="{{url_for('addRecipe')}}" aria-label="Add a recipe" 
+        class="btn btn-success">Add recipe</a>
 {% endblock %}

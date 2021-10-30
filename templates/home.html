@@ -1,130 +1,144 @@
 {% extends "base.html" %}
 
 {% block mainContent %}
-<div class="home-main-content">
-    <header class="text-success">
-        <h1>Welcome to recipe to grow!</h1>        
-        <h3>Where we share our love for plants, and the foods you can make of them</h3>
-    </header>
+    <div class="home-main-content">
+        <header class="text-success">
+            <h1>Welcome to recipe to grow!</h1>        
+            <h3>Where we share our love for plants, and the foods you can make of them</h3>
+        </header>
 
-    <a href="{{ url_for('recipes') }}" class="btn btn-success browse-recipe-button">Browse all recipes</a>
+        <a href="{{ url_for('recipes') }}" class="btn btn-success browse-recipe-button"
+            aria-label="Go to all recipes page">Browse all recipes</a>
 
-    <div class="row justify-content-around">
-        <!-- Most popular carousel -->        
-        <div class="col-sm-5 carousel-container">
-            <h5>Most popular</h5>
-            <div id="carouselMostPopular" class="carousel slide carousel-dark" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    {% for recipe in mostPopularRecipes %}
-                        {% if loop.first %}
-                            <button type="button" data-bs-target="#carouselMostPopular" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Slide 1"></button>
-                        {% else %}
-                            <button type="button" data-bs-target="#carouselMostPopular" data-bs-slide-to="{{loop.index0}}"
-                                aria-label="Slide {{loop.index0+1}}"></button>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="carousel-inner">
-                    {% for recipe in mostPopularRecipes %}
-                        {% if loop.first %}
-                            <div class="carousel-item active">
-                        {% else %}
-                            <div class="carousel-item">
-                        {% endif %}
-                                <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">
-                                    <div class="img-container">
-                                        <img src="/static/img/recipes/{{recipe.Image}}" class="carousel-image"
-                                            alt="placeholder">
-                                    </div>
-                                    <div class="carousel-caption recipe-caption">
-                                        <div class="row">
-                                            <h5 class="check-overflow col recipe-title">
-                                                {{ recipe.Title }}
-                                            </h5>
-                                            <div class="d-none col overflow-dots">...</div>
+        <div class="row justify-content-around">
+            <!-- Most popular carousel -->        
+            <div class="col-sm-5 carousel-container">
+                <h5>Most popular</h5>
+                <div id="carouselMostPopular" class="carousel slide carousel-dark" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        {% for recipe in mostPopularRecipes %}
+                            <!-- Set the first item to be active at the start -->
+                            {% if loop.first %}
+                                <button type="button" data-bs-target="#carouselMostPopular" 
+                                    data-bs-slide-to="0" class="active" aria-current="true" 
+                                    aria-label="Slide 1"></button>
+                            {% else %}
+                                <button type="button" data-bs-target="#carouselMostPopular" 
+                                    data-bs-slide-to="{{loop.index0}}" aria-label="Slide {{loop.index0+1}}">
+                                </button>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-inner">
+                        {% for recipe in mostPopularRecipes %}
+                            {% if loop.first %}
+                                <div class="carousel-item active">
+                            {% else %}
+                                <div class="carousel-item">
+                            {% endif %}
+                                    <!-- Make entire recipe card a link -->
+                                    <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}" 
+                                        aria-label="View this recipe">
+                                        <div class="img-container">
+                                            <img src="/static/img/recipes/{{recipe.Image}}" class="carousel-image"
+                                                alt="{{ recipe.Title }}">
                                         </div>
-                                        <div class="row">
-                                            <div class="check-overflow col recipe-description">
-                                                {{ recipe.Description }}                                                
+                                        <!-- The caption with the recipe title and description -->
+                                        <div class="carousel-caption recipe-caption">
+                                            <div class="row">
+                                                <h5 class="check-overflow col recipe-title">
+                                                    {{ recipe.Title }}
+                                                </h5>
+                                                <div class="d-none col overflow-dots">...</div>
                                             </div>
-                                            <div class="d-none overflow-dots col">...</div>
-                                        </div>                                        
-                                    </div>
-                                </a>
-                            </div>
-                    {% endfor %}
+                                            <div class="row">
+                                                <div class="check-overflow col recipe-description">
+                                                    {{ recipe.Description }}                                                
+                                                </div>
+                                                <div class="d-none overflow-dots col">...</div>
+                                            </div>                                        
+                                        </div>
+                                    </a>
+                                </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Previous and next arrows on the sides -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselMostPopular"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselMostPopular"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselMostPopular"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselMostPopular"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
-        </div>
 
-        <!-- Newly added carousel -->        
-        <div class="col-sm-5 carousel-container">
-            <h5>Newly added</h5>
-            <div id="carouselNewlyAdded" class="carousel slide carousel-dark" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    {% for recipe in mostRecentRecipes %}
-                        {% if loop.first %}
-                            <button type="button" data-bs-target="#carouselNewlyAdded" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Slide 1"></button>
-                        {% else %}
-                            <button type="button" data-bs-target="#carouselNewlyAdded" data-bs-slide-to="{{loop.index0}}"
-                                aria-label="Slide {{loop.index0+1}}"></button>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="carousel-inner">
-                    {% for recipe in mostRecentRecipes %}
-                        {% if loop.first %}
-                            <div class="carousel-item active">
-                        {% else %}
-                            <div class="carousel-item">
-                        {% endif %}
-                                <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}">
-                                    <div class="img-container">
-                                        <img src="/static/img/recipes/{{recipe.Image}}" class="carousel-image"
-                                            alt="placeholder">
-                                    </div>
-                                    <div class="carousel-caption recipe-caption">
-                                        <div class="row">
-                                            <h5 class="check-overflow col recipe-title">
-                                                {{ recipe.Title }}
-                                            </h5>
-                                            <div class="d-none col overflow-dots">...</div>
+            <!-- Newly added carousel -->        
+            <div class="col-sm-5 carousel-container">
+                <h5>Newly added</h5>
+                <div id="carouselNewlyAdded" class="carousel slide carousel-dark" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <!-- Set the first item to be active at the start -->
+                        {% for recipe in mostRecentRecipes %}
+                            {% if loop.first %}
+                                <button type="button" data-bs-target="#carouselNewlyAdded" data-bs-slide-to="0" 
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                            {% else %}
+                                <button type="button" data-bs-target="#carouselNewlyAdded" 
+                                    data-bs-slide-to="{{loop.index0}}" aria-label="Slide {{loop.index0+1}}">
+                                </button>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-inner">
+                        {% for recipe in mostRecentRecipes %}
+                            {% if loop.first %}
+                                <div class="carousel-item active">
+                            {% else %}
+                                <div class="carousel-item">
+                            {% endif %}
+                                    <!-- Make entire recipe card a link -->
+                                    <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}"
+                                        aria-label="View this recipe">
+                                        <div class="img-container">
+                                            <img src="/static/img/recipes/{{recipe.Image}}" class="carousel-image"
+                                                alt="{{ recipe.Title }}">
                                         </div>
-                                        <div class="row">
-                                            <div class="check-overflow col recipe-description">
-                                                {{ recipe.Description }}                                                
+                                        <!-- The caption with the recipe title and description -->
+                                        <div class="carousel-caption recipe-caption">
+                                            <div class="row">
+                                                <h5 class="check-overflow col recipe-title">
+                                                    {{ recipe.Title }}
+                                                </h5>
+                                                <div class="d-none col overflow-dots">...</div>
                                             </div>
-                                            <div class="d-none overflow-dots col">...</div>
-                                        </div>                                        
-                                    </div>
-                                </a>
-                            </div>
-                    {% endfor %}
+                                            <div class="row">
+                                                <div class="check-overflow col recipe-description">
+                                                    {{ recipe.Description }}                                                
+                                                </div>
+                                                <div class="d-none overflow-dots col">...</div>
+                                            </div>                                        
+                                        </div>
+                                    </a>
+                                </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Previous and next arrows on the sides -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselNewlyAdded"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselNewlyAdded"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselNewlyAdded"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselNewlyAdded"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
