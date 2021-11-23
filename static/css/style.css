@@ -6,7 +6,11 @@
 }
 
 .control{
-    margin: 5px;
+    margin: auto 5px;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* -------- Top Navigation */
@@ -42,15 +46,58 @@ li.nav-item a {
     text-align: center;
 }
 
-.carousel-image{
-    width: 300px;
-    height: 300px;
+.browse-recipe-button{
+    margin-top: 10px;
 }
 
-.carousel-caption p,h5 {
-    background-color: white;
+.carousel-container{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.carousel-container h5{
+    margin-bottom: 5px;
+}
+
+.carousel-item, .recipe{
+    height: 250px;
+}
+
+.img-container{
+    height: 80%;
+    width: 95%;
+    margin: 0px auto;
+}
+
+.carousel-image{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.recipe-caption{
+    bottom: 10px;
+    padding: 0px;
+    margin: 5px auto;
+}
+
+.recipe-caption > * > * {
     color: black;
-    margin-bottom: 0px;
+    margin: 0px auto;
+    white-space:nowrap;
+    overflow:hidden;
+    width: inherit;    
+}
+
+.recipe-caption .row *{
+    padding: 0px;
+    margin: 0px 3%;
+}
+
+.overflow-dots{
+    max-width: fit-content;
+    padding: 5px 0px 0px 5px;
+    line-height: 1rem;
+    margin: auto !important;
 }
 
 /* -------- Recipes page */
@@ -68,26 +115,32 @@ li.nav-item a {
 
 .recipe{
     text-align: center;
-    max-width: 200px;
+    max-width: 100%;
     margin: 10px auto;
+    padding: 0px calc(var(--bs-gutter-x) * .9);
+    background-color: #f8f9fa;
+    border: #53a57f solid 1px;
+    border-radius: 10%;
+}
+
+.recipe:hover{
+    background-color: #e4f7e6;
 }
 
 .recipe p{
     margin: 0px;
 }
 
-.recipe-title{
+.recipe-caption .row .recipe-title{
     font-weight: bold;
+    padding: 1px;
+    line-height: 1.5rem;
 }
 
 .recipe-description {
     font-style: italic;
     font-size: 0.9rem;
-}
-
-.all-recipes img{
-    width: 200px;
-    height: 200px;
+    line-height: 1rem;
 }
 
 /* -------- View Recipe */
@@ -113,6 +166,19 @@ li.nav-item a {
 
 .recipe-listing{
     display: flex;
+}
+
+.recipe-listing .row {
+    max-width: 80%;
+}
+
+.recipe-listing .row:hover{
+    text-decoration: underline;
+}
+
+.recipe-listing .row a {
+    white-space:nowrap;
+    overflow:hidden;
 }
 
 .recipe-controls{
@@ -157,12 +223,28 @@ li.nav-item a {
     margin: 5px;
 }
 
+.carousel-indicators{
+    margin-bottom: initial;
+}
+
 /* -------- Media Queries */
+
+@media (min-width: 576px){
+    .col-sm-4 {
+        flex: 0 0 auto;
+        width: 30%;
+        margin: 15px auto;
+    }
+}
 
 @media (min-width: 992px) {
     .navbar-card{
         margin-left: calc(83.33333333% - 110px);
         max-width: initial;
         align-items: center;
+    }
+
+    .carousel-item, .recipe{
+        height: 275px;
     }
 }

@@ -26,7 +26,8 @@
         </div>
         <!-- Recipe image -->
         <div class="col-md-5">
-            <img src="/static/img/recipes/{{recipe.Image}}" alt="{{recipe.Title}}" class="rounded singleRecipeImage">
+            <img src="/static/img/recipes/{{recipe.Image}}" alt="{{recipe.Title}}" 
+                class="rounded singleRecipeImage">
         </div>
     </div>
 
@@ -35,11 +36,13 @@
         <h5>Feel like growing the ingredients yourself?</h5>
         {% for product in products %}
             <div class="col">
-                <div><a href="#">{{product.Name}}</a></div>
+                <div>
+                    <a href="#" aria-label="Opens {{product.Name}} page (new window)" 
+                        target="_blank">{{product.Name}}</a>
+                </div>
                 <div>{{product.Amount}}</div>
                 <div>{{product.Price}}</div>
             </div>
         {% endfor %}
     </div>
-
 {% endblock %}

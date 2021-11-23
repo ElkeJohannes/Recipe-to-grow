@@ -167,4 +167,8 @@ The page is designed around basic colours, mainly in the green spectrum. This is
 ### **<ins>Acknowledgements</ins>** 
 - Credit to CI for the user authentication and baasic querie structure (doubt I really have to specify this, but just to be sure)
 - Info taken from: [Flask documentation website](https://flask.palletsprojects.com/en/2.0.x/patterns/fileuploads/) on how to do file uploads.
-- [This stack overflow question](https://stackoverflow.com/questions/47083403/extracting-input-from-all-input-boxes-into-a-list-using-flask) on how to handle multiple input boxes into an array.
+- For info on getting a date object in Mongo: [Medium.com](https://medium.com/nerd-for-tech/how-to-prepare-a-python-date-object-to-be-inserted-into-mongodb-and-run-queries-by-dates-and-range-bc0da03ea0b2)
+- Info from several stack overflow articles:
+  * [#1](https://stackoverflow.com/questions/47083403/extracting-input-from-all-input-boxes-into-a-list-using-flask) on how to handle multiple input boxes into an array.
+  * [#2](https://stackoverflow.com/questions/20129290/fire-event-on-bootstrap-carousel-slide-issue) on how to listen to bootstrap carousel slide change event
+  * [#3](https://stackoverflow.com/questions/30642725/pymongo-sorting-by-date)

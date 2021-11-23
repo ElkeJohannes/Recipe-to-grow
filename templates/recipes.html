@@ -1,61 +1,68 @@
 {% extends "base.html" %}
 
 {% block mainContent %}
+    <div class="row">
+        <div class="col-md-11 recipes-header">
+            <div class="row">
+                <form action="{{ url_for('search') }}" method="post" class="col">
+                    <div class="row">
+                        <!-- Input: Search phrase -->
+                        <div class="col">
+                            <label for="query" class="d-none"></label>
+                            <input type="text" name="query" id="query" minlength="3" required>
+                        </div>
+                        <div class="col">
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                            <!-- Reset search button -->
+                            <a href="{{ url_for('recipes') }}" aria-label="Reset the search" 
+                                class="btn btn-danger">Reset</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <h4>All recipes</h4>
+        </div>
+    </div>
 
-<div class="row">
-    <div class="col-md-11 recipes-header">
-        <div class="row">
-            <form action="{{ url_for('search') }}" method="post" class="col">
+    <hr>
+
+    <div class="row">
+        <div class="col-md-10 all-recipes">
+            <!-- Loop through all recipes, and display them -->
+            <div class="container">
                 <div class="row">
-                    <!-- Input: Search phrase -->
-                    <div class="col">
-                        <label for="query" class="d-none"></label>
-                        <input type="text" name="query" id="query" minlength="3" required>
+                {% for recipe in recipes %}
+                    <div class="recipe col-sm-4 col-l-3">
+                        <!-- Make entire recipe card a link -->
+                        <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}" 
+                            aria-label="View this recipe in detail">
+                            <div class="img-container">
+                                <img src="/static/img/recipes/{{recipe.Image}}" 
+                                    class="carousel-image" alt="{{ recipe.Title }}">
+                            </div>
+                            <!-- The caption with the recipe title and description -->
+                            <div class="recipe-caption">
+                                <div class="row">
+                                    <h5 class="check-overflow col recipe-title">
+                                        {{ recipe.Title }}
+                                    </h5>
+                                    <div class="d-none col overflow-dots">...</div>
+                                </div>
+                                <div class="row">
+                                    <div class="check-overflow col recipe-description">
+                                        {{ recipe.Description }}                                                
+                                    </div>
+                                    <div class="d-none overflow-dots col">...</div>
+                                </div>                                       
+                            </div>
+                        </a>
                     </div>
-                    <!-- Submit button -->
-                    <div class="col">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-search"></i> Search
-                        </button>
-                        <!-- Reset search button -->
-                        <a href="{{ url_for('recipes') }}" class="btn btn-danger">Reset</a>
-                    </div>
+                {% endfor %}
                 </div>
-            </form>
+            </div>
         </div>
-        <h4>All recipes</h4>
     </div>
-</div>
-
-<hr>
-
-<div class="row">
-    <div class="col-md-10 all-recipes">
-        <!-- Loop through all recipes, and display them -->
-        {% for recipe in recipes %}
-        <div class="recipe">            
-            <a href="{{ url_for('viewRecipe', recipe_id=recipe._id) }}" class="link-success">
-                <img src="/static/img/recipes/{{recipe.Image}}" alt="{{ recipe.Title }}">
-                <p class="recipe-title">
-                    <!-- If title contains more then 23 chars, trim it -->
-                    {% if recipe.Title|length > 23 %}
-                        {{ recipe.Title[0:22] }}..
-                    {% else %}
-                        {{ recipe.Title }}
-                    {% endif %}
-                </p>
-                <p class="recipe-description">
-                    <!-- Trim descriptions that are to long -->
-                    {% if recipe.Description|length > 48 %}
-                        {{ recipe.Description[0:46] }}..
-                    {% else %}
-                        {{ recipe.Description }}
-                    {% endif %}
-                </p>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-</div>
-
 {% endblock %}
